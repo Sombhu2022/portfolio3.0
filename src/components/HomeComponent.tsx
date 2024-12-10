@@ -82,7 +82,7 @@ const HomeComponent: React.FC = () => {
       <section className="z-10 h-full w-full flex gap-5 flex-col items-center justify-center bg-transparent relative">
         {/* LinkedIn Icon */}
         <a
-          href="https://www.linkedin.com/in/sombhu-das/"
+          href="https://www.linkedin.com/in/sombhu-das-21176823a/"
           target="_blank"
           rel="noopener noreferrer"
           className="absolute text-blue-600 text-2xl hover:text-blue-800 transition-all cursor-move"
@@ -106,7 +106,7 @@ const HomeComponent: React.FC = () => {
 
         {/* Twitter Icon */}
         <a
-          href="https://twitter.com/sombhudas"
+          href="https://x.com/Sombhudas2023"
           target="_blank"
           rel="noopener noreferrer"
           className="absolute text-blue-400 text-2xl hover:text-blue-600 transition-all cursor-move"
@@ -118,7 +118,7 @@ const HomeComponent: React.FC = () => {
 
         {/* Instagram Icon */}
         <a
-          href="https://instagram.com/sombhudas"
+          href="https://instagram.com/sombhu336"
           target="_blank"
           rel="noopener noreferrer"
           className="absolute text-pink-500 text-2xl hover:text-pink-700 transition-all cursor-move"
