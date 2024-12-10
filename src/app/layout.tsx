@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-import Navbar from "@/components/Navbar";
-import { CardSpotlight } from "@/components/ui/card-spotlight";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +19,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-      <CardSpotlight children={<Navbar/>} className=" w-[90vw] top-3 ml-[auto] mr-[auto]"/>
-        <TracingBeam children={ children }/>
+        {/* <TracingBeam children={ children }/> */}
+        {children}
       </body>
     </html>
   );

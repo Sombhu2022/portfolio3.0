@@ -1,17 +1,12 @@
 import React from 'react'
 
+
 function About() {
   return (
-    <section className='' id='about'>
+    <section className='border border-red-600' id='about'>
+   About
 
-      <div>About</div>
-      <div>About</div>
-      <div>About</div>
-      <div>About</div>
-      <div>About</div>
-      <div>About</div>
     </section>
   )
 }
-
 export default About

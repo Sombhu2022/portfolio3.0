@@ -24,6 +24,51 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    position: relative;
+}
+
+/* The existing spotlight effect */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  z-index: -1; /* Behind the content */
+  border-radius: 50%;
+  background-color: rgba(5, 99, 241, 0.3); /* Light white with some transparency */
+  filter: blur(200px); /* Adjust blur level */
+  pointer-events: none; /* Ensures the blur doesn't interfere with user interaction */
+}
+
+/* Position and size for the top-right spotlight */
+body::before {
+  top: 5%;
+  right: 5%;
+  width: 35vw; /* Responsive width */
+  height: 35vw; /* Responsive height */
+}
+
+/* Position and size for the bottom-left spotlight */
+body::after {
+  bottom: 5%;
+  left: 5%;
+  background: rgba(239, 26, 239, 0.283);
+  width: 35vw; /* Responsive width */
+  height: 35vw; /* Responsive height */
+}
+
+/* Add smaller sizes for smaller screens */
+@media (max-width: 768px) {
+  body::before, body::after {
+    width: 60vw;  /* Slightly bigger on smaller screens */
+    height: 60vw;
+  }
+}
+
+@media (max-width: 480px) {
+  body::before, body::after {
+    width: 80vw;  /* Even bigger for small mobile screens */
+    height: 80vw;
+  }
 }
 
 @layer utilities {
