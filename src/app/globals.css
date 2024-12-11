@@ -3,20 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
-  }
 }
 
-body {
+body{
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,12 +16,16 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.spotlight {
+  
     position: relative;
 }
 
-/* The existing spotlight effect */
-body::before,
-body::after {
+/* The existing .spotlight effect */
+.spotlight::before,
+.spotlight::after {
   content: "";
   position: absolute;
   z-index: -1; /* Behind the content */
@@ -39,16 +35,16 @@ body::after {
   pointer-events: none; /* Ensures the blur doesn't interfere with user interaction */
 }
 
-/* Position and size for the top-right spotlight */
-body::before {
+/* Position and size for the top-right .spotlight */
+.spotlight::before {
   top: 5%;
   right: 5%;
   width: 35vw; /* Responsive width */
   height: 35vw; /* Responsive height */
 }
 
-/* Position and size for the bottom-left spotlight */
-body::after {
+/* Position and size for the bottom-left .spotlight */
+.spotlight::after {
   bottom: 5%;
   left: 5%;
   background: rgba(239, 26, 239, 0.283);
@@ -58,14 +54,14 @@ body::after {
 
 /* Add smaller sizes for smaller screens */
 @media (max-width: 768px) {
-  body::before, body::after {
+  .spotlight::before, .spotlight::after {
     width: 60vw;  /* Slightly bigger on smaller screens */
     height: 60vw;
   }
 }
 
 @media (max-width: 480px) {
-  body::before, body::after {
+  .spotlight::before, .spotlight::after {
     width: 80vw;  /* Even bigger for small mobile screens */
     height: 80vw;
   }

@@ -57,9 +57,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <link rel="canonical" href="https://sombhudas4.vercel.app/" /> {/* Replace with your actual domain */}
-      </head>
       <body className={inter.className}>
         {/* <TracingBeam children={children} /> */}
         {children}
