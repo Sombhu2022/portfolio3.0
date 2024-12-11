@@ -8,7 +8,7 @@ import HomeComponent from "@/components/HomeComponent";
 
 export default function Home() {
   return (
-    <main className="h-[90vh] w-[88vw] mt-5">
+    <main className="">
       <HomeComponent/>
       <About />    
       <Contact/>

@@ -4,6 +4,8 @@ import Image from "next/image";
 import dp from "../images/my_photo1.jpg";
 import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
 import { BackgroundLines } from "./ui/background-line";
+import { div } from "three/webgpu";
+
 
 type Position = {
   top? : string;
@@ -78,14 +80,15 @@ const HomeComponent: React.FC = () => {
   }, [dragging]);
 
   return (
-    <BackgroundLines className="h-screen w-screen flex gap-5 flex-col items-center justify-center bg-transparent">
-      <section className="z-10 h-full w-full flex gap-5 flex-col items-center justify-center bg-transparent relative">
+    <div className="h-screen w-[98vw]  overflow-hidden ">
+    <BackgroundLines className="spotlight   flex gap-5 flex-col items-center justify-center bg-transparent">
+      <section className="mt-16 z-10 h-full w-full flex gap-5 flex-col items-center justify-center bg-transparent relative">
         {/* LinkedIn Icon */}
         <a
           href="https://www.linkedin.com/in/sombhu-das-21176823a/"
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute text-blue-600 text-2xl hover:text-blue-800 transition-all cursor-move"
+          className="absolute text-blue-600 text-3xl hover:text-blue-800 transition-all cursor-move"
           style={positions.linkedin}
           onMouseDown={(e) => handleMouseDown("linkedin", e)}
         >
@@ -143,12 +146,29 @@ const HomeComponent: React.FC = () => {
         </div>
 
         {/* Blog Section */}
-        <div>
-          <h1 className="text-3xl font-bold mb-2 text-blue-600">Sombhu Das</h1>
+        <div className="flex flex-col justify-center items-center">
+          
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r to-blue-600 from-purple-600 text-transparent bg-clip-text">SOMBHU DAS</h1>
+
           <p className="text-lg text-gray-700">Full Stack Developer</p>
         </div>
+ 
+       {/* button section */}
+        <div className="button_container flex gap-5 ">
+         
+          <a href={"/Sombhu Resume.pdf"} download={"Sombhu_Das_Resume.pdf"} className="px-5 py-3 border border-gray-800 hover:border-white rounded-full hover:text-blue-600 transition-all">
+            Resume
+          </a>
+         
+          <a href="#contact" className="px-5 py-3 border rounded-full  hover:border-gray-800 border-whit text-purple-600 hover:text-white">
+            Contact
+          </a>
+
+        </div>
+
       </section>
     </BackgroundLines>
+    </div>
   );
 };
 
