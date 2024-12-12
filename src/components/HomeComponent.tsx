@@ -5,13 +5,17 @@ import dp from "../images/my_photo1.jpg";
 import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
 import { BackgroundLines } from "./ui/background-line";
 import { div } from "three/webgpu";
+import About from "./About";
+import { FaFileDownload, FaEnvelope } from "react-icons/fa";
+import { FcDocument } from "react-icons/fc";
+import NeonButtons from "./NeonButtons";
 
 
 type Position = {
-  top? : string;
-  left? : string;
-  bottom? : any ;
-  right? : any ;
+  top?: string;
+  left?: string;
+  bottom?: any;
+  right?: any;
 };
 
 type PositionsState = {
@@ -26,11 +30,16 @@ const HomeComponent: React.FC = () => {
     linkedin: { top: "13%", left: "25%" },
     github: { bottom: "12%", left: "35%" },
     twitter: { top: "7%", right: "25%" },
-    instagram: { bottom: "18%", right: "30%" },
+    instagram: { bottom: "15%", right: "30%" },
   });
 
   const [dragging, setDragging] = useState<null | keyof PositionsState>(null);
-  const [offset, setOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [offset, setOffset] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+
+  
 
   // Start the drag operation
   const handleMouseDown = (icon: keyof PositionsState, e: React.MouseEvent) => {
@@ -47,12 +56,18 @@ const HomeComponent: React.FC = () => {
     if (dragging) {
       const newLeft = e.clientX - offset.x;
       const newTop = e.clientY - offset.y;
-      
+
       setPositions((prev) => ({
         ...prev,
         [dragging]: {
-          left: `${Math.min(Math.max(newLeft / window.innerWidth * 100, 5), 95)}%`,
-          top: `${Math.min(Math.max(newTop / window.innerHeight * 100, 5), 95)}%`,
+          left: `${Math.min(
+            Math.max((newLeft / window.innerWidth) * 100, 5),
+            95
+          )}%`,
+          top: `${Math.min(
+            Math.max((newTop / window.innerHeight) * 100, 5),
+            95
+          )}%`,
         },
       }));
     }
@@ -62,6 +77,8 @@ const HomeComponent: React.FC = () => {
   const handleMouseUp = () => {
     setDragging(null);
   };
+
+  
 
   // Add mousemove and mouseup event listeners when dragging
   React.useEffect(() => {
@@ -81,93 +98,85 @@ const HomeComponent: React.FC = () => {
 
   return (
     <div className="h-screen w-[98vw]  overflow-hidden ">
-    <BackgroundLines className="spotlight   flex gap-5 flex-col items-center justify-center bg-transparent">
-      <section className="mt-16 z-10 h-full w-full flex gap-5 flex-col items-center justify-center bg-transparent relative">
-        {/* LinkedIn Icon */}
-        <a
-          href="https://www.linkedin.com/in/sombhu-das-21176823a/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute text-blue-600 text-3xl hover:text-blue-800 transition-all cursor-move"
-          style={positions.linkedin}
-          onMouseDown={(e) => handleMouseDown("linkedin", e)}
-        >
-          <FaLinkedin />
-        </a>
+      <BackgroundLines className="spotlight   flex gap-5 flex-col items-center justify-center bg-transparent">
+        <section className="mt-16 z-10 h-full w-full flex gap-5 flex-col items-center justify-center bg-transparent relative">
+          {/* LinkedIn Icon */}
+          <a
+            href="https://www.linkedin.com/in/sombhu-das-21176823a/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute text-blue-600 text-3xl hover:text-blue-800 transition-all cursor-move"
+            style={positions.linkedin}
+            onMouseDown={(e) => handleMouseDown("linkedin", e)}
+          >
+            <FaLinkedin />
+          </a>
 
-        {/* GitHub Icon */}
-        <a
-          href="https://github.com/Sombhu2022"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute text-gray-500 text-2xl hover:text-gray-300 transition-all cursor-move"
-          style={positions.github}
-          onMouseDown={(e) => handleMouseDown("github", e)}
-        >
-          <FaGithub />
-        </a>
+          {/* GitHub Icon */}
+          <a
+            href="https://github.com/Sombhu2022"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute text-gray-500 text-2xl hover:text-gray-300 transition-all cursor-move"
+            style={positions.github}
+            onMouseDown={(e) => handleMouseDown("github", e)}
+          >
+            <FaGithub />
+          </a>
 
-        {/* Twitter Icon */}
-        <a
-          href="https://x.com/Sombhudas2023"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute text-blue-400 text-2xl hover:text-blue-600 transition-all cursor-move"
-          style={positions.twitter}
-          onMouseDown={(e) => handleMouseDown("twitter", e)}
-        >
-          <FaTwitter />
-        </a>
+          {/* Twitter Icon */}
+          <a
+            href="https://x.com/Sombhudas2023"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute text-blue-400 text-2xl hover:text-blue-600 transition-all cursor-move"
+            style={positions.twitter}
+            onMouseDown={(e) => handleMouseDown("twitter", e)}
+          >
+            <FaTwitter />
+          </a>
 
-        {/* Instagram Icon */}
-        <a
-          href="https://instagram.com/sombhu336"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute text-pink-500 text-2xl hover:text-pink-700 transition-all cursor-move"
-          style={positions.instagram}
-          onMouseDown={(e) => handleMouseDown("instagram", e)}
-        >
-          <FaInstagram />
-        </a>
+          {/* Instagram Icon */}
+          <a
+            href="https://instagram.com/sombhu336"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute text-pink-500 text-2xl hover:text-pink-700 transition-all cursor-move"
+            style={positions.instagram}
+            onMouseDown={(e) => handleMouseDown("instagram", e)}
+          >
+            <FaInstagram />
+          </a>
 
-        {/* Image Section */}
-        <div className="md:w-1/2 flex justify-center">
-          <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-blue-600">
-            <Image
-              src={dp}
-              alt="Sombhu Das"
-              layout="responsive"
-              width={224}
-              height={224}
-              className="object-cover"
-            />
+          {/* Image Section */}
+          <div className="md:w-1/2 flex justify-center">
+            <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-blue-600">
+              <Image
+                src={dp}
+                alt="Sombhu Das"
+                layout="responsive"
+                width={224}
+                height={224}
+                className="object-cover"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Blog Section */}
-        <div className="flex flex-col justify-center items-center">
-          
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r to-blue-600 from-purple-600 text-transparent bg-clip-text">SOMBHU DAS</h1>
+          {/* Blog Section */}
+          <div className="flex flex-col justify-center items-center">
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r to-blue-600 from-purple-600 text-transparent bg-clip-text">
+              SOMBHU DAS
+            </h1>
 
-          <p className="text-lg text-gray-700">Full Stack Developer</p>
-        </div>
- 
-       {/* button section */}
-        <div className="button_container flex gap-5 ">
-         
-          <a href={"/Sombhu Resume.pdf"} download={"Sombhu_Das_Resume.pdf"} className="px-5 py-3 border border-gray-800 hover:border-white rounded-full hover:text-blue-600 transition-all">
-            Resume
-          </a>
-         
-          <a href="#contact" className="px-5 py-3 border rounded-full  hover:border-gray-800 border-whit text-purple-600 hover:text-white">
-            Contact
-          </a>
+            <p className="text-lg text-gray-700">Full Stack Developer</p>
+          </div>
 
-        </div>
+        {/* button section */}
+       <NeonButtons/>
+        
 
-      </section>
-    </BackgroundLines>
+        </section>
+      </BackgroundLines>
     </div>
   );
 };
